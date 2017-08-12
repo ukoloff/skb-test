@@ -1,0 +1,27 @@
+== form_tag do
+  .form-group class=error_class(:title)
+    == label_tag :title, 'Заголовок'
+    == text_field_tag :title, @our['title'],
+      class: 'form-control',
+      required: true,
+      autofocus: true
+    span.help-block = @errors[:title]
+  .form-group class=error_class(:expire)
+    == label_tag :expire, 'Дата окончания'
+    == text_field_tag :expire,
+      (@our['expire'] or Time.new + 1.day).to_date.strftime('%d.%m.%Y'),
+      "data-provide"=> "datepicker",
+      required: true,
+      class: 'form-control'
+    span.help-block = @errors[:expire]
+  .form-group class=error_class(:description)
+    == label_tag :description, 'Аннотация'
+    == text_area_tag :description, @our['description'],
+      class: 'form-control',
+      required: true,
+      rows: 5
+    span.help-block = @errors[:description]
+  .form-group
+    button.btn.btn-primary
+      i.fa.fa-save>
+      | Установить
