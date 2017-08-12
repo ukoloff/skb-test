@@ -52,9 +52,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ruby '>= 2.2.5'
 
 gem 'foreman'
-gem 'slim'
 gem 'openssl-win-root', require: false if Gem.win_platform?
 gem 'listen'
 gem 'wdm' if Gem.win_platform?
+
 gem 'jquery-rails'
 gem 'without-rails'
+gem 'slim'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'bootswatch-rails'
+gem 'bootstrap-datepicker-rails'
