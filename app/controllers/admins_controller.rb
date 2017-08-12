@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-  def index
+  def show
+    @our = Fetcher.new.our
   end
 
   def create

@@ -1,1 +1,16 @@
 h1 Новость дня
+
+== form_tag do
+  == label_tag :title, 'Заголовок'
+  br
+  == text_field_tag :title, @our['title']
+  p
+  == label_tag :date, 'Дата окончания'
+  br
+  == date_field_tag :date, @our['date'].to_date
+  p
+  == label_tag :description, 'Аннотация'
+  br
+  == text_area_tag :description, @our['description']
+  p
+  == submit_tag 'Установить'
