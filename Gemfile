@@ -49,6 +49,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+ruby '>= 2.2.5'
+
 gem 'foreman'
 gem 'slim'
-gem 'openssl-win-root'
+gem 'openssl-win-root', require: false
+gem 'listen'
+gem 'wdm' if Gem.win_platform?

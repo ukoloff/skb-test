@@ -5,6 +5,7 @@ class Fetcher
   REFRESH = 60 * 5  # Частота загрузок из Яндекса
 
   def self.go
+    require 'openssl/win/root'  if Gem.win_platform?
     new.go
   end
 
