@@ -5,9 +5,9 @@ h1 Новость дня
   br
   == text_field_tag :title, @our['title']
   p
-  == label_tag :date, 'Дата окончания'
+  == label_tag :expire, 'Дата окончания'
   br
-  == date_field_tag :date, @our['date'].to_date
+  == date_field_tag :expire, (@our['expire'] or Time.new + 1.day).to_date
   p
   == label_tag :description, 'Аннотация'
   br

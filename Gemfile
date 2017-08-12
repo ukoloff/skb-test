@@ -53,7 +53,7 @@ ruby '>= 2.2.5'
 
 gem 'foreman'
 gem 'slim'
-gem 'openssl-win-root', require: false
+gem 'openssl-win-root', require: false if Gem.win_platform?
 gem 'listen'
 gem 'wdm' if Gem.win_platform?
 gem 'jquery-rails'
