@@ -1,4 +1,9 @@
 App.news = App.cable.subscriptions.create 'NewsChannel',
 
   received: (data)->
-    console.log "Got", data
+    $('#main').html t data
+
+t = withOut ->
+  h2 @title
+  text 'Дата: ', new Date(@date).toLocaleDateString()
+  div @description

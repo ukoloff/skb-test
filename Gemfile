@@ -56,3 +56,5 @@ gem 'slim'
 gem 'openssl-win-root', require: false
 gem 'listen'
 gem 'wdm' if Gem.win_platform?
+gem 'jquery-rails'
+gem 'without-rails'
