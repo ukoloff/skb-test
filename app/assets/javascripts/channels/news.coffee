@@ -9,5 +9,5 @@ install = ->
 
 t = withOut ->
   h2 @title
-  text 'Дата: ', new Date(@date).toLocaleDateString()
+  b @ruda
   div -> raw @description

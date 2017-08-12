@@ -5,14 +5,20 @@ class NewsChannel < ApplicationCable::Channel
     self.class.listen
   end
 
+  def self.news
+    z = Fetcher.news
+    z['ruda'] = z['date'].strftime '%d.%m.%Y %H:%M'
+    z
+  end
+
   # Послать свежую новость клиенту
   def refresh
-    transmit Fetcher.news
+    transmit self.class.news
   end
 
   # Послать свежую новость всем клиентам
   def self.refresh
-    ActionCable.server.broadcast 'news', Fetcher.news
+    ActionCable.server.broadcast 'news', news
   end
 
   # Слушать изменения в папке

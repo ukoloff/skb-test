@@ -7,7 +7,9 @@ h1 Новость дня
   p
   == label_tag :expire, 'Дата окончания'
   br
-  == date_field_tag :expire, (@our['expire'] or Time.new + 1.day).to_date
+  == text_field_tag :expire,
+    (@our['expire'] or Time.new + 1.day).to_date.strftime('%d.%m.%Y'),
+    "data-provide"=> "datepicker"
   p
   == label_tag :description, 'Аннотация'
   br
