@@ -1,5 +1,3 @@
-h1 Новость дня
-
 == form_tag do
   .form-group
     == label_tag :title, 'Заголовок'
@@ -20,4 +18,6 @@ h1 Новость дня
       rows: 5,
       required: true
   .form-group
-    == submit_tag 'Установить', class: 'btn btn-default'
+    button.btn.btn-primary
+      i.fa.fa-save>
+      | Установить
