@@ -8,6 +8,5 @@ install = ->
       .html t data
 
 t = withOut ->
-  h2 @title
-  b @ruda
+  h2 @title, -> small @ruda
   div -> raw @description

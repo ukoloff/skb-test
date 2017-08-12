@@ -1,18 +1,23 @@
 h1 Новость дня
 
 == form_tag do
-  == label_tag :title, 'Заголовок'
-  br
-  == text_field_tag :title, @our['title']
-  p
-  == label_tag :expire, 'Дата окончания'
-  br
-  == text_field_tag :expire,
-    (@our['expire'] or Time.new + 1.day).to_date.strftime('%d.%m.%Y'),
-    "data-provide"=> "datepicker"
-  p
-  == label_tag :description, 'Аннотация'
-  br
-  == text_area_tag :description, @our['description']
-  p
-  == submit_tag 'Установить', class: 'btn btn-default'
+  .form-group
+    == label_tag :title, 'Заголовок'
+    == text_field_tag :title, @our['title'],
+      class: 'form-control',
+      required: true
+  .form-group
+    == label_tag :expire, 'Дата окончания'
+    == text_field_tag :expire,
+      (@our['expire'] or Time.new + 1.day).to_date.strftime('%d.%m.%Y'),
+      "data-provide"=> "datepicker",
+      class: 'form-control',
+      required: true
+  .form-group
+    == label_tag :description, 'Аннотация'
+    == text_area_tag :description, @our['description'],
+      class: 'form-control',
+      rows: 5,
+      required: true
+  .form-group
+    == submit_tag 'Установить', class: 'btn btn-default'
