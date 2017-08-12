@@ -14,6 +14,11 @@ class Fetcher
     z
   end
 
+  # Текущая новость
+  def self.news
+    new.news
+  end
+
   def path
     self.class.path
   end
