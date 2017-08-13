@@ -9,7 +9,7 @@
   .form-group class=error_class(:expire)
     == label_tag :expire, 'Дата окончания'
     == text_field_tag :expire,
-      (@our['expire'] or Time.new + 1.day).to_date.strftime('%d.%m.%Y'),
+      expire_date.strftime('%d.%m.%Y'),
       "data-provide"=> "datepicker",
       required: true,
       class: 'form-control'
