@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class FetcherTest < ActiveSupport::TestCase
-  def x_test_fetch
+  def test_fetch
     assert z = Fetcher.new.fetch
     assert z['date']
     assert z['title']
