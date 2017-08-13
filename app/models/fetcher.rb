@@ -5,7 +5,6 @@ class Fetcher
   REFRESH = 60 * 5  # Частота загрузок из Яндекса
 
   def self.go
-    require 'openssl/win/root'  if Gem.win_platform?
     new.go
   end
 
@@ -34,6 +33,7 @@ class Fetcher
 
   # Загрузить новость с Яндекса
   def fetch
+    require 'openssl/win/root'  if Gem.win_platform?
     require 'rss'
     z = RSS::Parser.parse(URL).items.first
     Hash[%w(date title description).map{|f| [f, z.send(f)]}]
