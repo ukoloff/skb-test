@@ -1,24 +1,16 @@
-# README
+# Тестовое задание СКБ Контур
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Build Status](https://travis-ci.org/ukoloff/skb-test.svg)](https://travis-ci.org/ukoloff/skb-test)
 
-Things you may want to cover:
+## Запуск
 
-* Ruby version
+```sh
+bundle install
+foreman start
+```
 
-* System dependencies
+## Тесты
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+bundle exec rails test
+```
