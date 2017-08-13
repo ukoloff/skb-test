@@ -40,11 +40,11 @@ class Fetcher
   end
 
   def load kind
-    YAML.load_file(path + kind.to_s) rescue {}
+    YAML.load_file(path + "#{kind}.yml") rescue {}
   end
 
   def save kind, data
-    (path + kind.to_s).write YAML.dump data
+    (path + "#{kind}.yml").write YAML.dump data
   end
 
   def their
