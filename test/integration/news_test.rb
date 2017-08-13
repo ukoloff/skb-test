@@ -29,8 +29,8 @@ class NewsTest < ActionDispatch::IntegrationTest
     assert_response :success
     finish = Time.now
     our = Fetcher.new.our
-    assert_operator start, :<, our['date']
-    assert_operator finish, :>, our['date']
+    assert_operator start, :<=, our['date']
+    assert_operator finish, :>=, our['date']
     our.delete 'date'
     src['expire'] = start.to_date.to_time
     assert_equal our, src

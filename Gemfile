@@ -63,3 +63,5 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
+
+gem "appveyor-worker" if ENV['APPVEYOR_API_URL']
