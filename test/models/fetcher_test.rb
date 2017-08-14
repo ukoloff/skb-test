@@ -47,4 +47,14 @@ class FetcherTest < ActiveSupport::TestCase
     assert_equal Fetcher.news, their
   end
 
+  def test_expire
+    z = Fetcher.new
+    z.our = data = {'expire'=> Time.now + 1.hour}
+    z.update
+    assert_equal z.our, data
+    z.our = {'expire'=> Time.now - 1.second}
+    z.update
+    assert z.our[:expired]
+  end
+
 end

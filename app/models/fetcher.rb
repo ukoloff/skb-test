@@ -84,6 +84,8 @@ class Fetcher
 
     return if @next and @next > Time.now
 
+    self.our = our.merge expired: Time.now unless @next
+
     @next = Time.now + REFRESH
     x = their
     n = fetch rescue {}
