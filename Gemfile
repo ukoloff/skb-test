@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
@@ -35,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -47,21 +46,21 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 ruby '>= 2.2.5'
 
 gem 'foreman'
-gem 'openssl-win-root', require: false if Gem.win_platform?
 gem 'listen'
+gem 'openssl-win-root', require: false if Gem.win_platform?
 gem 'wdm' if Gem.win_platform?
 
-gem 'jquery-rails'
-gem 'without-rails'
-gem 'slim'
 gem 'bootstrap-sass'
-gem 'font-awesome-rails'
-gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'bootswatch-rails'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'slim'
+gem 'without-rails'
 
-gem "appveyor-worker" if ENV['APPVEYOR_API_URL']
+gem 'appveyor-worker' if ENV['APPVEYOR_API_URL']

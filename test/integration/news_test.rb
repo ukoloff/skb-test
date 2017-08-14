@@ -4,13 +4,13 @@ class NewsTest < ActionDispatch::IntegrationTest
   def test_index
     get '/'
     assert_response :success
-    assert_select "#main", ''
+    assert_select '#main', ''
   end
 
   def test_form
     get '/admin'
     assert_response :success
-    assert_select "form" do
+    assert_select 'form' do
       assert_select 'input'
       assert_select 'textarea'
     end

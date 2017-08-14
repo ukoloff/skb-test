@@ -1,5 +1,4 @@
 class Fetcher
-
   URL = 'https://news.yandex.ru/index.rss'
   TICK = 10         # Частота проверок на устаревание
   REFRESH = 60 * 5  # Частота загрузок из Яндекса
@@ -24,7 +23,6 @@ class Fetcher
   end
 
   def go
-    last = nil
     while true
       update
       sleep TICK
@@ -33,19 +31,19 @@ class Fetcher
 
   # Загрузить новость с Яндекса
   def fetch
-    require 'openssl/win/root'  if Gem.win_platform?
+    require 'openssl/win/root' if Gem.win_platform?
     require 'net/http'
     z = Net::HTTP.get URI URL
     require 'rss'
     z = RSS::Parser.parse(z).items.first
-    Hash[%w(date title description).map{|f| [f, z.send(f)]}]
+    Hash[%w[date title description].map { |f| [f, z.send(f)] }]
   end
 
-  def load kind
+  def load(kind)
     YAML.load_file(path + "#{kind}.yml") rescue {}
   end
 
-  def save kind, data
+  def save(kind, data)
     (path + "#{kind}.yml").write YAML.dump data
   end
 
@@ -53,7 +51,7 @@ class Fetcher
     load :their
   end
 
-  def their= data
+  def their=(data)
     save :their, data
   end
 
@@ -61,7 +59,7 @@ class Fetcher
     load :our
   end
 
-  def our= data
+  def our=(data)
     save :our, data
   end
 
@@ -82,14 +80,12 @@ class Fetcher
       return
     end
 
-    return if @next and @next > Time.now
+    return if @next && @next > Time.now
 
     self.our = our.merge expired: Time.now unless @next
 
     @next = Time.now + REFRESH
-    x = their
     n = fetch rescue {}
-    self.their = n if n.size > 0 and n != x
+    self.their = n if !n.empty? && n != their
   end
-
 end
